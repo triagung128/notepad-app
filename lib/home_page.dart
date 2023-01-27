@@ -82,20 +82,22 @@ class _HomePageState extends State<HomePage> {
     if (_isValid) {
       final filePath = await FileHelper.getFilePath(_titleController.text);
       FileHelper.writeFile(filePath, _contentController.text);
-      showCupertinoDialog(
-        context: context,
-        builder: (context) {
-          return CupertinoAlertDialog(
-            title: const Text('File Saved'),
-            actions: [
-              CupertinoDialogAction(
-                child: const Text('Ok'),
-                onPressed: () => Navigator.pop(context),
-              ),
-            ],
-          );
-        },
-      );
+      if (context.mounted) {
+        showCupertinoDialog(
+          context: context,
+          builder: (context) {
+            return CupertinoAlertDialog(
+              title: const Text('File Saved'),
+              actions: [
+                CupertinoDialogAction(
+                  child: const Text('Ok'),
+                  onPressed: () => Navigator.pop(context),
+                ),
+              ],
+            );
+          },
+        );
+      }
     } else {
       showCupertinoDialog(
         context: context,

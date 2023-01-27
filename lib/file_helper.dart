@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 
 class FileHelper {
@@ -15,7 +16,7 @@ class FileHelper {
       return contents;
     } catch (e) {
       // Jika terjadi eror, mencetak pesan eror ke konsol dan mengembalikan teks kosong.
-      print(e);
+      debugPrint(e.toString());
       return '';
     }
   }
